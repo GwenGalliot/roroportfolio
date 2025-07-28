@@ -6,5 +6,5 @@ use Illuminate\Support\Facades\Route;
 //    'title' => 'Example'
 // ]);
 Route::statamic('Nudes', 'nudes', []);
-Route::statamic('Portrait', 'portraits', []);
+Route::statamic('Portraits', 'portraits', []);
 Route::statamic('Argentique', 'argentique', []);

@@ -13,16 +13,32 @@
   </header>
 
 
-  <div class="flex flex-row justify-center flex-wrap py-10 ">
+      <div class="columns-1 sm:columns-2 lg:columns-3 gap-4">
 
-    {{ collection:photos }}
-<a href="/">    {{photo}}
-    <img class="h-60" src="{{url}}" />
+    {{ taxonomy:category }}
+    {{cat_title = title}}
+        {{collection:photos taxonomy:category="{slug}" limit="1" }}
+        <a href="/{{cat_title}}"  class="group block break-inside-avoid mb-4">
+          <div class="relative overflow-hidden rounded-md">
+            {{ photo }}
+            <img src="{{ url }}"
+              class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy"
+              width="800" height="1200">
+            {{ /photo }}
 
-    {{/photo}}
-  </a>
-      
-    {{ /collection:photos}}
+            <!-- overlay -->
+            <div
+              class="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-colors duration-300 flex items-end">
+              <span
+                class="text-white text-center font-medium text-lg translate-y-2 group-hover:translate-y-0 transition-all duration-300 px-4 pb-4">
+                {{ cat_title }}
+              </span>
+            </div>
+          </div>
+        </a>
+ 
+        {{/collection:photos }}
+    {{ /taxonomy:category }}
 
   </div>
 
@@ -38,7 +54,7 @@
       <!-- grid -->
       <div class="columns-1 sm:columns-2 lg:columns-3 gap-4">
         {{ taxonomy:shooting }}
-        {{ shooting_title = title }} <!-- grab once, while we’re still in the taxonomy scope -->
+        {{ shooting_title = title }} 
 
         {{ collection:photos taxonomy:shooting="{slug}" limit="1" sort="date:desc" }}
         <a href="" class="group block break-inside-avoid mb-4">
