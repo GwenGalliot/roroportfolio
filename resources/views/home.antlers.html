@@ -14,80 +14,73 @@
 
 
   <div class="flex flex-row justify-center flex-wrap py-10 ">
-    {{ taxonomy:category }}
-    {{ term = title }}
 
-    {{ collection:photos taxonomy:category="{slug}" limit="1" sort="date:desc" }}
+    {{ collection:photos }}
+<a href="/">    {{photo}}
+    <img class="h-60" src="{{url}}" />
 
-    {{if { collection:photos taxonomy:category="{slug}" count="true"} > 0 }}
+    {{/photo}}
+  </a>
+      
+    {{ /collection:photos}}
+
+  </div>
 
 
-    <a href="/{{term}}" class="relative p-5 ">
-      <div class="relative ">
-        {{ photo }}
+  <section class="py-24 md:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <img src="{{ url }}" alt="{{  title }}" class="rounded-lg" loading="lazy" width="400" height="600">
+      <!-- heading -->
+      <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-12 md:mb-16 text-[#bfa799]">
+        mes derniers shootings
+      </h2>
 
-      </div>
-    </a>
-    {{/if}}
-    </div>
+      <!-- grid -->
+      <div class="columns-1 sm:columns-2 lg:columns-3 gap-4">
+        {{ taxonomy:shooting }}
+        {{ shooting_title = title }} <!-- grab once, while we’re still in the taxonomy scope -->
 
-    <!-- recent work -->
-    <section class="py-24 md:py-32">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {{ collection:photos taxonomy:shooting="{slug}" limit="1" sort="date:desc" }}
+        <a href="" class="group block break-inside-avoid mb-4">
+          <div class="relative overflow-hidden rounded-md">
+            {{ photo }}
+            <img src="{{ url }}"
+              class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy"
+              width="800" height="1200">
+            {{ /photo }}
 
-        <!-- heading -->
-        <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-12 md:mb-16 text-[#bfa799]">
-          mes derniers shootings
-        </h2>
-
-        <!-- grid -->
-        <div class="columns-1 sm:columns-2 lg:columns-3 gap-4">
-          {{ taxonomy:shooting }}
-          {{ shooting_title = title }} <!-- grab once, while we’re still in the taxonomy scope -->
-
-          {{ collection:photos taxonomy:shooting="{slug}" limit="1" sort="date:desc" }}
-          <a href="" class="group block break-inside-avoid mb-4">
-            <div class="relative overflow-hidden rounded-md">
-              {{ photo }}
-              <img src="{{ url }}"
-                class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
-                loading="lazy" width="800" height="1200">
-              {{ /photo }}
-
-              <!-- overlay -->
-              <div
-                class="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-colors duration-300 flex items-end">
-                <span
-                  class="text-white text-center font-medium text-lg translate-y-2 group-hover:translate-y-0 transition-all duration-300 px-4 pb-4">
-                  {{ shooting_title }}
-                </span>
-              </div>
+            <!-- overlay -->
+            <div
+              class="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-colors duration-300 flex items-end">
+              <span
+                class="text-white text-center font-medium text-lg translate-y-2 group-hover:translate-y-0 transition-all duration-300 px-4 pb-4">
+                {{ shooting_title }}
+              </span>
             </div>
-          </a>
-          {{ /collection:photos }}
-          {{ /taxonomy:shooting }}
-        </div>
-
-      </div>
-    </section>
-
-    <!-- about -->
-    <section id="about">
-      <div class="flex justify-around p-5">
-        <img src="/assets/portrait.jpeg" alt="photo de ta tete" loading="lazy" decoding="async"
-          class="h-100 max-w[120] xl:h-150 m-10">
-        <p class="py-5 mx-10 font-thin leading-relaxed text-[#2b2522] text-justify text-xl xl:text-3xl">
-          {{ta_life}}
-        </p>
-      </div>
-      <div class="flex flex-col justify-center py-10 m-10">
-        <a href="https://www.instagram.com/romane_celie/"
-          class="text-center text-7xl font-extrabold hover:underline text-[#bfa799]">
-          instagram
+          </div>
         </a>
+        {{ /collection:photos }}
+        {{ /taxonomy:shooting }}
       </div>
-    </section>
+
+    </div>
+  </section>
+
+  <!-- about -->
+  <section id="about">
+    <div class="flex justify-around p-5">
+      <img src="/assets/portrait.jpeg" alt="photo de ta tete" loading="lazy" decoding="async"
+        class="h-100 max-w[120] xl:h-150 m-10">
+      <p class="py-5 mx-10 font-thin leading-relaxed text-[#2b2522] text-justify text-xl xl:text-3xl">
+        {{ta_life}}
+      </p>
+    </div>
+    <div class="flex flex-col justify-center py-10 m-10">
+      <a href="https://www.instagram.com/romane_celie/"
+        class="text-center text-7xl font-extrabold hover:underline text-[#bfa799]">
+        instagram
+      </a>
+    </div>
+  </section>
 
 </main>
