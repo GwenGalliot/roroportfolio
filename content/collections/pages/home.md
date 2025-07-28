@@ -1,16 +1,13 @@
 ---
-title: Home
 id: home
-template: home
 blueprint: pages
+title: 'Romane Célie'
+template: home
+author: fe3876dd-50c2-4e59-85ee-4d150dbf8330
+updated_by: fe3876dd-50c2-4e59-85ee-4d150dbf8330
+updated_at: 1753623372
+background:
+  - b912b875-1b24-4140-aa8b-e3371331acc0.jpeg
+catchphrase: "Roro photo, c'est trop trop beaux"
+ta_life: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
 ---
-## Welcome to your brand new Statamic site!
-
-Not sure what to do next? Here are a few ideas, but feel free to explore in your own way, in your own time.
-
-- [Jump into the Control Panel](/cp) and edit this page or begin setting up your own collections and blueprints.
-- [Head to the docs](https://statamic.dev) and learn how Statamic works.
-- [Watch some Statamic videos](https://youtube.com/statamic) on YouTube.
-- [Join our Discord chat](https://statamic.com/discord) and meet thousands of other Statamic developers.
-- [Start a discussion](https://github.com/statamic/cms/discussions) and get answers to your questions.
-- [Star Statamic on Github](https://github.com/statamic/cms) if you enjoy using it!

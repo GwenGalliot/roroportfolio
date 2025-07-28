@@ -1,3 +1,15 @@
 super: true
 id: fe3876dd-50c2-4e59-85ee-4d150dbf8330
 password_hash: $2y$12$fg6DB5EsEIGqx3ZDgx0zC.Iha9Et2tmqpOBbmrnXupeeg9ukMglvC
+preferences:
+  taxonomies:
+    category:
+      after_save: create_another
+  collections:
+    photos:
+      columns:
+        - title
+        - slug
+        - photo
+        - category
+      after_save: create_another

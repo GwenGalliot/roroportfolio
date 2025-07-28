@@ -1,0 +1,14 @@
+<div class="text-3xl font-extrabold">
+  {{arg}}
+</div>
+
+<div class="mt-15 min-h-screen columns-1 sm:colums-2 md:columns-3 gap-4 space-y-4 p-5">
+  {{ collection:photos taxonomy:category="argentique" }}
+
+    <figure class=" break-inside-avoid group relative overflow-hidden rounded-md">
+      <img class="w-full h-auto object-cover" src="{{photo}}"/>
+      <figcaption ></figcaption>
+    </figure>
+
+  {{ /collection:photos }}
+</div>

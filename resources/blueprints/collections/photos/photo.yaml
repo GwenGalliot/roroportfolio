@@ -1,0 +1,63 @@
+title: Photo
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+          -
+            handle: photo
+            field:
+              max_files: 1
+              min_files: 1
+              container: assets
+              type: assets
+              display: Photo
+          -
+            handle: derscription
+            field:
+              type: text
+              display: Derscription
+          -
+            handle: gallery_order
+            field:
+              type: integer
+              display: 'Gallery order'
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: category
+            field:
+              type: terms
+              taxonomies:
+                - category
+              display: Category
+              mode: select
+          -
+            handle: shooting
+            field:
+              taxonomies:
+                - shooting
+              type: terms
+              display: Shooting
+          -
+            handle: taxonomy
+            field:
+              type: taxonomies
+              display: taxonomy

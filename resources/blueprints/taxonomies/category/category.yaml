@@ -1,0 +1,29 @@
+title: Category
+sections:
+  main:
+    fields:
+      -
+        handle: title
+        field:
+          type: text
+          display: Title
+          validate: required
+      -
+        handle: slug
+        field:
+          type: slug
+          required: true
+      -
+        handle: cover
+        field:
+          type: assets
+          container: assets
+          max_files: 1
+          instructions: Cover image for the category listing
+  sidebar:
+    fields:
+      -
+        handle: description
+        field:
+          type: textarea
+          instructions: Short description for SEO / meta
