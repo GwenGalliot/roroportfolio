@@ -1,5 +1,5 @@
 <main class="w-full">
-  <header class="my-5">
+  <header class="mb-5">
     <div class="bg-cover bg-center min-h-100" style="background-image: url('{{asset url='/assets/background.jpeg'}}')">
       <h1
         class=" text-center bg-cover background-center text-shadow-lg  text-4xl md:text-8xl  font-extrabold text-[#bfa799] "
@@ -11,39 +11,32 @@
       </h2>
     </div>
   </header>
-
-
-      <div class="columns-1 sm:columns-2 lg:columns-3 gap-4">
-
+  <div class="columns-1 sm:columns-2 lg:columns-3 gap-4 p-10">
     {{ taxonomy:category }}
     {{cat_title = title}}
-        {{collection:photos taxonomy:category="{slug}" limit="1" }}
-        <a href="/{{cat_title}}"  class="group block break-inside-avoid mb-4">
-          <div class="relative overflow-hidden rounded-md">
-            {{ photo }}
-            <img src="{{ url }}"
-              class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy"
-              width="800" height="1200">
-            {{ /photo }}
+    {{collection:photos taxonomy:category="{slug}" limit="1" }}
+    <a href="/{{cat_title}}" class="group block break-inside-avoid mb-4">
+      <div class="relative overflow-hidden rounded-md">
+        {{ photo }}
+        <img src="{{ url }}" class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+          loading="lazy" width="800" height="1200">
+        {{ /photo }}
 
-            <!-- overlay -->
-            <div
-              class="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-colors duration-300 flex items-end">
-              <span
-                class="text-white text-center font-medium text-lg translate-y-2 group-hover:translate-y-0 transition-all duration-300 px-4 pb-4">
-                {{ cat_title }}
-              </span>
-            </div>
-          </div>
-        </a>
- 
-        {{/collection:photos }}
+        <!-- overlay -->
+        <div
+          class="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-colors duration-300 flex items-center justify-center">
+          <p
+            class="text-white  text-2xl font-bold translate-y-2 group-hover:translate-y-0 transition-all duration-300 px-4 pb-4">
+            {{ cat_title }}
+          </p>
+        </div>
+      </div>
+    </a>
+
+    {{/collection:photos }}
     {{ /taxonomy:category }}
-
   </div>
-
-
-  <section class="py-24 md:py-32">
+  <section>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
       <!-- heading -->
@@ -54,7 +47,7 @@
       <!-- grid -->
       <div class="columns-1 sm:columns-2 lg:columns-3 gap-4">
         {{ taxonomy:shooting }}
-        {{ shooting_title = title }} 
+        {{ shooting_title = title }}
 
         {{ collection:photos taxonomy:shooting="{slug}" limit="1" sort="date:desc" }}
         <a href="" class="group block break-inside-avoid mb-4">
@@ -67,9 +60,9 @@
 
             <!-- overlay -->
             <div
-              class="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-colors duration-300 flex items-end">
+              class="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-colors duration-300 flex items-end justify-center">
               <span
-                class="text-white text-center font-medium text-lg translate-y-2 group-hover:translate-y-0 transition-all duration-300 px-4 pb-4">
+                class="text-white font-medium text-lg translate-y-2 group-hover:translate-y-0 transition-all duration-300 px-4 pb-4">
                 {{ shooting_title }}
               </span>
             </div>

@@ -5,6 +5,8 @@ preferences:
   taxonomies:
     category:
       after_save: create_another
+    filter:
+      after_save: create_another
   collections:
     photos:
       columns:
@@ -12,4 +14,3 @@ preferences:
         - slug
         - photo
         - category
-      after_save: create_another

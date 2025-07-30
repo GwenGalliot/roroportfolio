@@ -61,3 +61,10 @@ tabs:
             field:
               type: taxonomies
               display: taxonomy
+          -
+            handle: filter
+            field:
+              taxonomies:
+                - filter
+              type: terms
+              display: filter

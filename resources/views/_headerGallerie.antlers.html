@@ -1,0 +1,16 @@
+<!-- headerGallerie.antlers.html -->
+
+<a href="/" class="font-bold text-xl p-5 hover:text-[#D5BDAF]">Rorororororo</a>
+
+<div id="filter-gallerie" >
+  <div class="flex flex-row justify-around flex-wrap p-5">
+    {{ taxonomy:filter }}
+      <button x-data="{ {{slug}}show :true}" @click="{{slug}}show = ! {{slug}}show"
+              class="h-40 w-40 bg-gray bg-[#D5BDAF] hover:bg-[#E3D5CA] rounded-lg content-center text-center text-l m-5 font-bold">
+        {{ title }}
+      </button>
+    {{ /taxonomy:filter }}
+  </div>
+</div>
+
+

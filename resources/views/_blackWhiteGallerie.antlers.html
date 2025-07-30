@@ -1,0 +1,5 @@
+{{ collection:photos :taxonomy:filter="filter" }}
+  <figure class="break-inside-avoid group">
+    <img class="w-full h-auto object-cover" src="{{ photo }}" alt="{{ title ?? 'Photo' }}" />
+  </figure>
+{{ /collection:photos }}

@@ -1,12 +1,32 @@
-<a href="/">Rorororororo</a>
+<a href="/" class="font-bold text-xl p-5 hover:text-[#D5BDAF]">Rorororororo</a>
 
-<div class="mt-15 min-h-screen columns-1 sm:colums-2 md:columns-3 gap-4 space-y-4 p-5">
-  {{ collection:photos taxonomy:category="{{arg}}" }}
+{{ category = segment_1}}
 
-    <figure class=" break-inside-avoid group relative overflow-hidden rounded-md">
-      <img class="w-full h-auto object-cover" src="{{photo}}"/>
-      <figcaption ></figcaption>
-    </figure>
+<div id="filter-gallerie" x-data="{
+   activeFilters: []
+}">
 
-  {{ /collection:photos }}
+  <div id="filter-gallerie">
+    <div class="flex flex-row justify-around flex-wrap p-5">
+      {{ taxonomy:filter }}
+      <button @click="activeFilters.includes('{{slug}}') ? activeFilters = activeFilters.filter(f => f !== '{{ slug }}') : activeFilters.push('{{slug}}')"
+
+        :class="activeFilters.includes('{{slug}}') ? 'bg-[#E3D5CA]': '' "
+        class="h-40 w-40 bg-gray bg-[#D5BDAF] hover:bg-[#E3D5CA] rounded-lg content-center text-center text-l m-5 font-bold">
+        {{ title }}
+      </button>
+      {{ /taxonomy:filter }}
+    </div>
+  </div>
+
+
+  <div class="min-h-screen columns-1 sm:colums-2 md:columns-3 gap-4 space-y-4 p-5">
+    {{ collection:photos taxonomy:category="{arg}" }}
+      <figure
+       
+        class="break-inside-avoid group relative overflow-hidden rounded-md">
+        <img class="w-full h-auto object-cover" src="{{ photo }}" alt="">
+      </figure>
+    {{ /collection:photos }}
+  </div>
 </div>
