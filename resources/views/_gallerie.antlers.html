@@ -1,32 +1,48 @@
 <a href="/" class="font-bold text-xl p-5 hover:text-[#D5BDAF]">Rorororororo</a>
-
-{{ category = segment_1}}
-
-<div id="filter-gallerie" x-data="{
-   activeFilters: []
-}">
-
-  <div id="filter-gallerie">
-    <div class="flex flex-row justify-around flex-wrap p-5">
-      {{ taxonomy:filter }}
-      <button @click="activeFilters.includes('{{slug}}') ? activeFilters = activeFilters.filter(f => f !== '{{ slug }}') : activeFilters.push('{{slug}}')"
-
-        :class="activeFilters.includes('{{slug}}') ? 'bg-[#E3D5CA]': '' "
-        class="h-40 w-40 bg-gray bg-[#D5BDAF] hover:bg-[#E3D5CA] rounded-lg content-center text-center text-l m-5 font-bold">
-        {{ title }}
-      </button>
-      {{ /taxonomy:filter }}
-    </div>
-  </div>
-
-
-  <div class="min-h-screen columns-1 sm:colums-2 md:columns-3 gap-4 space-y-4 p-5">
-    {{ collection:photos taxonomy:category="{arg}" }}
-      <figure
-       
-        class="break-inside-avoid group relative overflow-hidden rounded-md">
-        <img class="w-full h-auto object-cover" src="{{ photo }}" alt="">
-      </figure>
-    {{ /collection:photos }}
-  </div>
+  
+{{# ---------- FILTER BUTTONS ---------- #}}
+<div class="flex flex-row justify-around flex-wrap p-5">
+  {{ taxonomy:filter }}
+    <button
+      class="filter-btn h-40 w-40 bg-[#D5BDAF] hover:bg-[#E3D5CA] rounded-lg text-center text-l m-5 font-bold"
+      data-term="{{ slug }}">
+      {{ title }}
+    </button>
+  {{ /taxonomy:filter }}
 </div>
+
+{{# ---------- GALLERY ---------- #}}
+<div id="gallery"
+     class="min-h-screen columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4 p-5">
+  {{ collection:photos taxonomy:category="{arg}" scope="pic" }}
+    <figure
+      class="gallery-item break-inside-avoid group relative overflow-hidden"
+  data-terms=" {{pic:filter | pluck('slug') | join(',')}}">
+      <img class="w-full h-auto object-cover" src="{{ photo }}" alt="">
+    </figure>
+  {{ /collection:photos }}
+</div>
+
+<script>
+/* --- tiny filter script --- */
+(function () {
+  const buttons = document.querySelectorAll('.filter-btn');
+  const items   = document.querySelectorAll('.gallery-item');
+  const filterList = [];
+
+  buttons.forEach(btn => btn.addEventListener('click', () => {
+  const term = btn.dataset.term;
+  if(!filterList.includes(term)){filterList.push(term); } 
+  else{filterList.pop(term)};
+
+  console.log('filterList: ', filterList)
+  
+  items.forEach(el => {
+      console.log('el dataset', el.dataset.terms.split(','))
+      const hasMatch = el.dataset.terms.trim().split(',').some(item => filterList.includes(item));
+      console.log('hasmatch -> ', hasMatch)
+      el.style.display = hasMatch ? 'block' : 'none';
+    });
+  }));
+})();
+</script>
