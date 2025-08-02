@@ -23,9 +23,7 @@
 					{{ photo }}
 					<img src="{{ url }}"
 						class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
-						loading="lazy" width="800" height="1200">
-					{{ /photo }}
-
+						loading="lazy" width="800" height="1200"> {{ /photo }}
 					<div
 						class="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-colors duration-300 flex items-center justify-center">
 						<p
@@ -40,7 +38,7 @@
 			{{ /taxonomy:category }}
 			{{taxonomy:shooting limit='1'}}
 				{{collection:photos limit='1'}}
-				<a href="/Shooting" class="group block break-inside-avoid mb-4 max-w-sm m-20">
+				<a href="/Shootings" class="group block break-inside-avoid mb-4 max-w-sm m-20">
 					<div class="relative overflow-hidden rounded-md">
 						{{ photo }}
 						<img src="{{ url }}"
@@ -69,9 +67,10 @@
 			<div class="columns-1 sm:columns-2 lg:columns-3 gap-4 mb-20">
 				{{ taxonomy:shooting }}
 				{{ shooting_title = title }}
+				{{ urlSlug = "/Shooting/" + {slug} }}
 
 				{{ collection:photos taxonomy:shooting="{slug}" limit="1" sort="date:desc" }}
-				<a href="" class="group block break-inside-avoid mb-4">
+				<a href="{{urlSlug}}" class="group block break-inside-avoid mb-4">
 					<div class="relative overflow-hidden rounded-md">
 						{{ photo }}
 						<img src="{{ url }}"

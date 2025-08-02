@@ -1,5 +1,26 @@
+<a href="/" class="font-bold text-xl p-5 hover:text-[#D5BDAF]">ROOOOOOOOOOORO</a>
 <div>
 	<h1>Mes shootings</h1>
-	<div>
+    
+	<div class="flex flex-row flex-wrap">
+{{ taxonomy:shooting }}
+{{shootingName = title}}
+		{{ collection:photos taxonomy:shooting="{slug}" count="true" }}
+		    {{ if total_results > 0 }}
+			<div class="max-w-sm">
+			    <h2>{{ shootingName }}</h2>
+			    {{ collection:photos taxonomy:shooting="{slug}" limit="1" }}
+				<a href="/Shooting/{{ shootingName | slugify }}">
+				    <figure class="gallery-item break-inside-avoid group relative overflow-hidden">
+					<img class="w-full h-auto object-cover"
+					     src="{{ photo }}"
+					     alt="">
+				    </figure>
+				</a>
+			    {{ /collection:photos }}
+			</div>
+		    {{ /if }}
+		{{ /collection:photos }}
+	    {{ /taxonomy:shooting }}
 	</div>
-</div>
+    </div>
