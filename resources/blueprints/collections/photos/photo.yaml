@@ -57,11 +57,6 @@ tabs:
               type: terms
               display: Shooting
           -
-            handle: taxonomy
-            field:
-              type: taxonomies
-              display: taxonomy
-          -
             handle: filter
             field:
               taxonomies:

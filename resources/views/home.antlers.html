@@ -1,95 +1,112 @@
 <main class="w-full">
-  <header class="mb-5">
-    <div class="bg-cover bg-center min-h-100" style="background-image: url('{{asset url='/assets/background.jpeg'}}')">
-      <h1
-        class=" text-center bg-cover background-center text-shadow-lg  text-4xl md:text-8xl  font-extrabold text-[#bfa799] "
-        style="background-image: url('{{background}}')">
-        {{title}}
-      </h1>
-      <h2 class="p-10 text-center text-2xl md:text-4xl font-bold text-[#d5bdaf]">
-        {{catchphrase}}
-      </h2>
-    </div>
-  </header>
-  <div class="columns-1 sm:columns-2 lg:columns-3 gap-4 p-10">
-    {{ taxonomy:category }}
-    {{cat_title = title}}
-    {{collection:photos taxonomy:category="{slug}" limit="1" }}
-    <a href="/{{cat_title}}" class="group block break-inside-avoid mb-4">
-      <div class="relative overflow-hidden rounded-md">
-        {{ photo }}
-        <img src="{{ url }}" class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
-          loading="lazy" width="800" height="1200">
-        {{ /photo }}
+	<header class="mb-5">
+		<div class="bg-cover bg-center min-h-100"
+			style="background-image: url('{{asset url='/assets/background.jpeg'}}')">
+			<h1 class=" text-center bg-cover background-center text-shadow-lg  text-4xl md:text-8xl  font-extrabold text-[#bfa799] "
+				style="background-image: url('{{background}}')">
+				{{title}}
+			</h1>
+			<h2 class="p-10 text-center text-2xl md:text-4xl font-bold text-[#d5bdaf]">
+				{{catchphrase}}
+			</h2>
+		</div>
+	</header>
 
-        <!-- overlay -->
-        <div
-          class="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-colors duration-300 flex items-center justify-center">
-          <p
-            class="text-white  text-2xl font-bold translate-y-2 group-hover:translate-y-0 transition-all duration-300 px-4 pb-4">
-            {{ cat_title }}
-          </p>
-        </div>
-      </div>
-    </a>
+		<div class="content-center text-center text-3xl md:text-4xl font-extrabold text-center text-[#bfa799] "> 
+		<h2> Mes photos </h2></div>
+		<div class="small-gallerie flex flex-row mb-20 flex-wrap justify-center">
+			{{ taxonomy:category }}
+			{{cat_title = title}}
+			{{collection:photos taxonomy:category="{slug}" limit="1" }}
+			<a href="/{{cat_title}}" class="group block break-inside-avoid mb-4 max-w-sm m-20">
+				<div class="relative overflow-hidden rounded-md">
+					{{ photo }}
+					<img src="{{ url }}"
+						class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+						loading="lazy" width="800" height="1200">
+					{{ /photo }}
 
-    {{/collection:photos }}
-    {{ /taxonomy:category }}
-  </div>
-  <section>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+					<div
+						class="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-colors duration-300 flex items-center justify-center">
+						<p
+							class="text-white  text-2xl font-bold translate-y-2 group-hover:translate-y-0 transition-all duration-300 px-4 pb-4">
+							{{ cat_title }}
+						</p>
+					</div>
+				</div>
+			</a>
 
-      <!-- heading -->
-      <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-12 md:mb-16 text-[#bfa799]">
-        mes derniers shootings
-      </h2>
+			{{/collection:photos }}
+			{{ /taxonomy:category }}
+			{{taxonomy:shooting limit='1'}}
+				{{collection:photos limit='1'}}
+				<a href="/Shooting" class="group block break-inside-avoid mb-4 max-w-sm m-20">
+					<div class="relative overflow-hidden rounded-md">
+						{{ photo }}
+						<img src="{{ url }}"
+							class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+							loading="lazy" width="800" height="1200">
+						{{ /photo }}
+						<div
+							class="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-colors duration-300 flex items-center justify-center">
+							<p
+								class="text-white  text-2xl font-bold translate-y-2 group-hover:translate-y-0 transition-all duration-300 px-4 pb-4">
+								Mes shootings
+							</p>
+						</div>
+					</div>
+				</a>
+				{{/collection:photos }}
+			{{/taxonomy:shooting }}
+		</div>
 
-      <!-- grid -->
-      <div class="columns-1 sm:columns-2 lg:columns-3 gap-4">
-        {{ taxonomy:shooting }}
-        {{ shooting_title = title }}
+	<section>
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<h2 class="text-3xl md:text-4xl font-extrabold text-center mb-10 md:mb-15 text-[#bfa799]">
+				mes derniers shootings
+			</h2>
 
-        {{ collection:photos taxonomy:shooting="{slug}" limit="1" sort="date:desc" }}
-        <a href="" class="group block break-inside-avoid mb-4">
-          <div class="relative overflow-hidden rounded-md">
-            {{ photo }}
-            <img src="{{ url }}"
-              class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy"
-              width="800" height="1200">
-            {{ /photo }}
+			<div class="columns-1 sm:columns-2 lg:columns-3 gap-4 mb-20">
+				{{ taxonomy:shooting }}
+				{{ shooting_title = title }}
 
-            <!-- overlay -->
-            <div
-              class="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-colors duration-300 flex items-end justify-center">
-              <span
-                class="text-white font-medium text-lg translate-y-2 group-hover:translate-y-0 transition-all duration-300 px-4 pb-4">
-                {{ shooting_title }}
-              </span>
-            </div>
-          </div>
-        </a>
-        {{ /collection:photos }}
-        {{ /taxonomy:shooting }}
-      </div>
+				{{ collection:photos taxonomy:shooting="{slug}" limit="1" sort="date:desc" }}
+				<a href="" class="group block break-inside-avoid mb-4">
+					<div class="relative overflow-hidden rounded-md">
+						{{ photo }}
+						<img src="{{ url }}"
+							class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+							loading="lazy" width="800" height="1200">
+						{{ /photo }}
 
-    </div>
-  </section>
+						<div
+							class="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-colors duration-300 flex items-end justify-center">
+							<span
+								class="text-white font-medium text-lg translate-y-2 group-hover:translate-y-0 transition-all duration-300 px-4 pb-4">
+								{{ shooting_title }}
+							</span>
+						</div>
+					</div>
+				</a>
+				{{ /collection:photos }}
+				{{ /taxonomy:shooting }}
+			</div>
+		</div>
+	</section>
 
-  <!-- about -->
-  <section id="about">
-    <div class="flex justify-around p-5">
-      <img src="/assets/portrait.jpeg" alt="photo de ta tete" loading="lazy" decoding="async"
-        class="h-100 max-w[120] xl:h-150 m-10">
-      <p class="py-5 mx-10 font-thin leading-relaxed text-[#2b2522] text-justify text-xl xl:text-3xl">
-        {{ta_life}}
-      </p>
-    </div>
-    <div class="flex flex-col justify-center py-10 m-10">
-      <a href="https://www.instagram.com/romane_celie/"
-        class="text-center text-7xl font-extrabold hover:underline text-[#bfa799]">
-        instagram
-      </a>
-    </div>
-  </section>
-
+	<section id="about">
+		<div class="flex justify-around p-5">
+			<img src="/assets/portrait.jpeg" alt="photo de ta tete" loading="lazy" decoding="async"
+				class="h-100 max-w[120] xl:h-150 m-10">
+			<p class="py-5 mx-10 font-thin leading-relaxed text-[#2b2522] text-justify text-xl xl:text-3xl">
+				{{ta_life}}
+			</p>
+		</div>
+		<div class="flex flex-col justify-center py-10 m-10">
+			<a href="https://www.instagram.com/romane_celie/"
+				class="text-center text-7xl font-extrabold hover:underline text-[#bfa799]">
+				instagram
+			</a>
+		</div>
+	</section>
 </main>

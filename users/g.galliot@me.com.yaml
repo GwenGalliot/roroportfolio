@@ -11,6 +11,7 @@ preferences:
     photos:
       columns:
         - title
-        - slug
         - photo
         - category
+        - shooting
+        - filter
