@@ -7,6 +7,7 @@ export default defineConfig({
         laravel({
             input: ['resources/css/site.css', 'resources/js/site.js'],
             refresh: true,
+	    base: './'
         }),
         tailwindcss(),
     ],
