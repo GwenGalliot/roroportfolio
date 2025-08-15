@@ -1,8 +1,9 @@
-<a href="/" class="font-bold text-xl p-5 hover:text-[#D5BDAF]">Rorororororo</a>
+<a href="/" class="font-bold text-3xl p-5 hover:text-[#D5BDAF]">Back to Roro</a>
 
-<div class="flex flex-row justify-around flex-wrap p-5">
+<div class="flex flex-row justify-around flex-wrap p-5 max-w-full">
 	{{ taxonomy:filter }}
-	<button class="filter-btn h-40 w-40 bg-[#D5BDAF] hover:bg-[#E3D5CA] rounded-lg text-center text-l m-5 font-bold"
+	<button class="filter-btn h-20 min-w-[40%] bg-[#D5BDAF] hover:bg-[#cad9d9] rounded-sm text-center text-2xl m-2  font-bold"
+		style="box-shadow: rgba(0,0,0,0.25) 0px 5px 15px"
 		data-term="{{ slug }}">
 		{{ title }}
 	</button>
@@ -11,8 +12,9 @@
 
 <div id="gallery" class="min-h-screen columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4 p-5">
 	{{ collection:photos taxonomy:category="{arg}" scope="pic" }}
-	<figure class="gallery-item break-inside-avoid group relative overflow-hidden"
-		data-terms=" {{pic:filter | pluck('slug') | join(',')}}">
+	<figure class="gallery-item break-inside-avoid rounded-md group relative overflow-hidden"
+		data-terms=" {{pic:filter | pluck('slug') | join(',')}}"
+		style="box-shadow: rgba(0,0,0,0.45) 0px 5px 15px">
 		<img class="w-full h-auto object-cover" src="{{ photo }}" alt="">
 	</figure>
 	{{ /collection:photos }}
@@ -27,11 +29,11 @@
 			const term = btn.dataset.term;
 			if (!filterList.includes(term)) {
 				filterList.push(term);
-				btn.classList.add('bg-[#E3D5CA]')
+				btn.classList.add('bg-[#cad9d9]')
 			}
 			else {
 				filterList = filterList.filter(e => e != term)
-				btn.classList.remove('bg-[#E3D5CA]')
+				btn.classList.remove('bg-[#cad9d9]')
 
 			};
 

@@ -1,9 +1,11 @@
-<a href="/" class="font-bold text-xl p-5 hover:text[#D5BDAF]">ROOOOOOOOOOOOORO</a>
+<a href="/" class="font-bold text-3xl p-5 hover:text-[#D5BDAF]">Back to Roro</a>
 
-{{collection:photos taxonomy:shooting="{slug}"}}
-	<div class="p-5 flex flex-row flex-wrap">
-		<div class="max-w-sm">
-		<img src="{{photo}}"/>
-		</div>
-	</div>
-{{/collection:photos taxonomy:shooting="{slug}"}}
+<div class="min-h-screen  columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4 p-5">
+	{{collection:photos taxonomy:shooting="{slug}"}}
+		<figure class="gallery-item break-inside-avoid rounded-md group relative overflow-hidden"
+		data-terms=" {{pic:filter | pluck('slug') | join(',')}}"
+		style="box-shadow: rgba(0,0,0,0.45) 0px 5px 15px">
+		<img class="w-full h-auto object-cover" src="{{ photo }}" alt="">
+		</figure>
+	{{/collection:photos taxonomy:shooting="{slug}"}}
+</div>
